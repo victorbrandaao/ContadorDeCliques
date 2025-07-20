@@ -44,5 +44,5 @@ jobs:
           # 1. 'latest', para ser fácil de pegar a última versão.
           # 2. Uma tag com o ID do commit, para termos uma versão única e rastreável.
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+          ghcr.io/victorbrandaao/contadordecliques:latest
+          ghcr.io/victorbrandaao/contadordecliques:${{ github.sha }}
