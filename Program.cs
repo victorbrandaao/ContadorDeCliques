@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Configurar Redis
 builder.Services.AddSingleton<IConnectionMultiplexer>(provider =>
 {
-    var connectionString = builder.Configuration.GetConnectionString("Redis") ?? "redis:6379";
+    var connectionString = Environment.GetEnvironmentVariable("REDIS_CONNECTION_STRING") ?? builder.Configuration.GetConnectionString("Redis") ?? "redis:6379";
     return ConnectionMultiplexer.Connect(connectionString);
 });
 

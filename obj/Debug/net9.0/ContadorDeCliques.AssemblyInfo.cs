@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ContadorDeCliques")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35546423e8ca8b240ffb6090d56bf3e130993bb4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b3c0d0f28b22255744b701a416925bf1780ddea")]
 [assembly: System.Reflection.AssemblyProductAttribute("ContadorDeCliques")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ContadorDeCliques")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

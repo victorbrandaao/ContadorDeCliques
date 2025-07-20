@@ -1,0 +1,28 @@
+# render.yaml - O nosso arquivo de Infraestrutura como Código para a Render
+
+services:
+  # Serviço 1: Nosso banco de dados Redis. A Render o criará para nós.
+  - type: redis
+    name: redis-contador
+    plan: free # Especificamos o plano gratuito!
+
+  # Serviço 2: Nossa aplicação web C#.
+  - type: web
+    name: contador-de-cliques # Este será o nome do seu serviço e parte da URL
+    plan: free # Também no plano gratuito!
+    env: docker # Informamos que nosso projeto usa um Dockerfile.
+
+    # A Render vai se conectar a este repositório para construir e implantar.
+    # !!! IMPORTANTE: Verifique se esta URL é exatamente a do seu repositório no GitHub !!!
+    repo: https://github.com/victorbrandaao/ContadorDeCliques
+
+    # Configuração da variável de ambiente para o Redis.
+    envVars:
+      # Aqui está a mágica: criamos a variável de ambiente na nossa aplicação...
+      - key: REDIS_CONNECTION_STRING
+        # ...e dizemos para a Render preenchê-la com a string de conexão
+        # do serviço Redis que criamos logo acima.
+        fromService:
+          type: redis
+          name: redis-contador
+          property: connectionString
