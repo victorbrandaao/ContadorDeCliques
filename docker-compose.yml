@@ -1,0 +1,26 @@
+# A versão do arquivo de compose. É uma boa prática sempre definir.
+version: "3.8"
+
+# A seção 'services' é onde definimos nossos contêineres.
+services:
+  # 1. O serviço da nossa aplicação C#
+  app:
+    # 'build: .' diz ao Docker Compose para construir uma imagem a partir
+    # do Dockerfile que está na pasta atual (.).
+    build: .
+    # 'ports' mapeia a porta do seu Mac para a porta do contêiner.
+    # Estamos mapeando a porta 8080 do seu Mac para a porta 8080 do contêiner.
+    # No .NET 8, a porta padrão para HTTP é 8080.
+    ports:
+      - "8080:8080"
+    # 'depends_on' garante que o contêiner do redis será iniciado ANTES
+    # do contêiner da nossa aplicação. Isso é crucial!
+    depends_on:
+      - redis
+
+  # 2. O serviço do nosso banco de dados Redis
+  redis:
+    # 'image: redis:alpine' diz ao Docker Compose para baixar a imagem oficial
+    # do Redis (versão 'alpine', que é bem pequena) do Docker Hub.
+    # Não precisamos construir nada, apenas usar a imagem pronta.
+    image: "redis:alpine"
